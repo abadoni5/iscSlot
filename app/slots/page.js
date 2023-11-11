@@ -2,8 +2,11 @@ import Image from "next/image";
 import Navbar2 from "@/components/Navbar2";
 
 export default function Home() {
+  const styling = {
+    background: "#FEF7ED",
+  };
   return (
-    <div>
+    <div style={styling}>
       <Navbar2 />
       <div className="flex flex-col items-center justify-center min-h-screen py-2">
         <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
