@@ -1,0 +1,16 @@
+.mainClass {
+    position: relative;
+}
+
+.img2 {
+    position: absolute;
+    top: 57rem;
+    z-index: -1;
+}
+
+.img1 {
+    position: absolute;
+    right: 0;
+    top: 30rem;
+    z-index: -1;
+}

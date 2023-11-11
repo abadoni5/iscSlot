@@ -1,11 +1,11 @@
 import Image from "next/image";
-import Navbar from "@/components/Navbar";
+import Navbar2 from "@/components/Navbar2";
 import Inventory from "@/components/inventory";
 
 export default function Home() {
   return (
     <div>
-      <Navbar />
+      <Navbar2 />
       <Inventory />
     </div>
   );
