@@ -26,11 +26,11 @@ export default function App() {
                     style={{ height: '380px' }} 
                     className="mySwiper"
                 >
-                    <SwiperSlide><a href='#'><img src="group2.png" alt='Sport Image' /> <p className='text-center text-2xl mt-4 mr-8 font-semibold'>Lorem Ipsum</p></a></SwiperSlide>
-                    <SwiperSlide><a href='#'><img src="group3.png" alt='Sport Image' /> <p className='text-center text-2xl mt-4 mr-8 font-semibold'>Lorem Ipsum</p></a></SwiperSlide>
-                    <SwiperSlide><a href='#'><img src="group4.png" alt='Sport Image' /> <p className='text-center text-2xl mt-4 mr-8 font-semibold'>Lorem Ipsum</p></a></SwiperSlide>
-                    <SwiperSlide><a href='#'><img src="group5.png" alt='Sport Image' /> <p className='text-center text-2xl mt-4 mr-8 font-semibold'>Lorem Ipsum</p></a></SwiperSlide>
-                    <SwiperSlide><a href='#'><img src="group6.png" alt='Sport Image' /> <p className='text-center text-2xl mt-4 mr-8 font-semibold'>Lorem Ipsum</p></a></SwiperSlide>
+                    <SwiperSlide><a href='/slots'><img src="group2.png" alt='Athletics' /> <p className='text-center text-2xl mt-4 mr-8 font-semibold'>Athletics</p></a></SwiperSlide>
+                    <SwiperSlide><a href='/slots'><img src="group3.png" alt='Football' /> <p className='text-center text-2xl mt-4 mr-8 font-semibold'>Football</p></a></SwiperSlide>
+                    <SwiperSlide><a href='/slots'><img src="group4.png" alt='Kick Boxing' /> <p className='text-center text-2xl mt-4 mr-8 font-semibold'>Kick Boxing</p></a></SwiperSlide>
+                    <SwiperSlide><a href='/slots'><img src="group5.png" alt='Basket Ball' /> <p className='text-center text-2xl mt-4 mr-8 font-semibold'>Bakset Ball</p></a></SwiperSlide>
+                    <SwiperSlide><a href='/slots'><img src="group6.png" alt='Power Lifting' /> <p className='text-center text-2xl mt-4 mr-8 font-semibold'>Power Lifting</p></a></SwiperSlide>
                 </Swiper>
             </div>
         </>

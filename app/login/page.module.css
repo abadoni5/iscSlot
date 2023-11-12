@@ -1,0 +1,18 @@
+/* page.module.css */
+.mainClass {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.img1 {
+  width: 100px;
+  height: 100px;
+  /* Add any additional styling for img1 */
+}
+
+.img2 {
+  width: 120px;
+  height: 120px;
+  /* Add any additional styling for img2 */
+}

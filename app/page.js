@@ -17,26 +17,26 @@ export default function Home() {
 
   const faqData = [
     {
-      question: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia?',
-      answer: 'molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium',
+      question: 'How can I book slots at the Indoor Sports Complex (ISC)?',
+      answer: 'Our website allows you to easily book slots for the gym or any other sport without the need to visit in person. Simply log in and schedule your preferred time.',
     },
     {
-      question: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia?',
-      answer: 'molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium',
+      question: 'Is it possible to book slots for multiple sports at once?',
+      answer: 'Absolutely! Our platform offers the flexibility to reserve slots for various sports activities, making it convenient for you to plan your fitness routine.',
     },
     {
-      question: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia?',
-      answer: 'molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium',
+      question: 'Can I issue sports equipment through the website?',
+      answer: 'Yes, you can! The website provides a seamless process for issuing sports equipment and managing inventory. Enjoy the convenience of accessing the gear you need for your favorite sports.',
     },
     {
-      question: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia?',
-      answer: 'molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium',
+      question: 'What is the advantage of using the website over the current manual booking system?',
+      answer: 'By using our website, you can bypass the need to physically visit every Sunday from 9-10 for slot bookings. It streamlines the process, saving you time and providing a more efficient way to manage your sports activities.',
     },
     {
-      question: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia?',
-      answer: 'molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium',
+      question: 'How do I navigate the inventory management feature on the website?',
+      answer: 'Managing inventory is simple! The website offers an intuitive interface for you to easily keep track of sports equipment availability, making it straightforward to issue and return items as needed.',
     },
-  ];
+  ]
 
   return (
     <div>
