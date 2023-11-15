@@ -22,6 +22,7 @@ export default function Home() {
             >
               Home
             </a>
+            
           </main>
         </div>
       </div>
