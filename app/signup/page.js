@@ -101,14 +101,6 @@ export default function Signup() {
                 alert("Check your email for the confirmation link");
 
                 await insertUser(formData.fullname, formData.email);
-                const userId = await fetchUserId(formData.email);
-
-                console.log('User ID from users table:', userId);
-
-                if (userId !== null) {
-                    document.cookie = `userId=${userId}`;
-                }
-
             }
         } catch (error) {
             console.error('Unexpected error during signup:', error.message);
