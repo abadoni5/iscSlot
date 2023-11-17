@@ -27,7 +27,7 @@ const Navbar = () => {
 
                 <div className="hidden md:flex">
                     <a href="/signup">
-                        <button className='text-amber-300 hover:bg-opacity-90 text-xl font-semibold bg-emerald-900 py-4 px-16 rounded-full border border-amber-300 mr-16'>
+                        <button className='text-amber-300 hover:bg-opacity-90 text-xl font-semibold hover:bg-amber-300 bg-emerald-900 py-4 px-16 rounded-full border border-amber-300 mr-16'>
                             Sign Up
                         </button>
                     </a>
