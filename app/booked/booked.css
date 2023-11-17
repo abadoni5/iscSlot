@@ -9,5 +9,11 @@
   margin-bottom: 10%;
   padding: 10px;
   gap: 50px;
- 
+}
+
+.bookings-container {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
 }
