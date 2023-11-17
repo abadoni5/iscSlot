@@ -6,6 +6,9 @@ import Inventory from "../../components/Inventory";
 import "./inventory.css";
 import { useState, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
+import Cookies from "js-cookie";
+// import { useRouter } from "next/router";
+import Link from "next/link";
 
 const supabaseUrl = "https://uxklmuwfhfwrwfvtjszi.supabase.co";
 const supabaseKey =
@@ -37,9 +40,18 @@ async function createInventory(userId, invID) {
 }
 
 export default function Home() {
+  //   const router = useRouter();
+
+  const userId = "404";
   const [inventory, setInventory] = useState([]);
 
+  //   const [userId, setUserId] = useState(null);
+
   useEffect(() => {
+    // Retrieve user ID from the cookie using js-cookie
+    // const userIdFromCookie = Cookies.get("user_id");
+    // setUserId(userIdFromCookie);
+
     getInventory();
     // createInventory(userId, invID, booking_time); // Move this outside useEffect if needed
     // issueInventory(userId, inventoryId, issued_time);
@@ -58,7 +70,6 @@ export default function Home() {
     console.log(`Selected item: ${itemName}`);
   };
 
-  const userId = "404";
   const [selectedInvId, setSelectedInvId] = useState(null);
 
   const handleSlotToggle = (invID) => {
@@ -76,6 +87,7 @@ export default function Home() {
         // Insert booking record into the 'bookings' table
         await createInventory(userId, selectedInvId, booking_time);
         console.log("Booking confirmed successfully!");
+        // router.push("/booked");
       } catch (error) {
         console.error("Error confirming booking:", error);
       }
@@ -100,12 +112,14 @@ export default function Home() {
             ))}
           </div>
           <div className="mt-200">
-            <button
-              onClick={handleConfirm}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-48"
-            >
-              Confirm
-            </button>
+            <Link href="/booked">
+              <button
+                onClick={handleConfirm}
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-48"
+              >
+                Confirm
+              </button>
+            </Link>
           </div>
         </main>
       </div>

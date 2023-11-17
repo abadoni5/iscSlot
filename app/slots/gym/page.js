@@ -7,6 +7,7 @@ import Slot from "@/components/slot";
 import { useState, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
 import react from "@heroicons/react";
+import Link from "next/link";
 
 const supabaseUrl = "https://uxklmuwfhfwrwfvtjszi.supabase.co";
 const supabaseKey =
@@ -78,6 +79,7 @@ export default function Home() {
         // Insert booking record into the 'bookings' table
         await createBooking(userId, selectedSlotId, booking_time);
         console.log("Booking confirmed successfully!");
+        router.push("/booked");
       } catch (error) {
         console.error("Error confirming booking:", error);
       }
@@ -95,25 +97,60 @@ export default function Home() {
           <p className="description">
             Press the button below to confirm your slot
           </p>
-          <button
-            onClick={handleConfirm}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-12"
-          >
-            Confirm
-          </button>
+          <Link href="/booked">
+            <button
+              onClick={handleConfirm}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-12"
+            >
+              Confirm
+            </button>
+          </Link>
         </div>
         <div className="right">
           <h1 className="heading">Monday</h1>
           <div className="slots">
-            {timeslots.map((timeslot, index) => (
-              <Slot
-                key={index}
-                time1={timeslot.start_time}
-                time2={timeslot.end_time}
-                onSlotToggle={() => handleSlotToggle(timeslot.slot_id)}
-                isActive={timeslot.slot_id === selectedSlotId}
-              />
-            ))}
+            {timeslots
+              .filter((timeslot) => timeslot.day === "Monday") // Filter slots for Monday
+              .map((timeslot, index) => (
+                <Slot
+                  key={index}
+                  time1={timeslot.start_time}
+                  time2={timeslot.end_time}
+                  onSlotToggle={() => handleSlotToggle(timeslot.slot_id)}
+                  isActive={timeslot.slot_id === selectedSlotId}
+                />
+              ))}
+          </div>
+
+          {/* Repeat the same structure for the other days */}
+          <h1 className="heading">Tuesday</h1>
+          <div className="slots">
+            {timeslots
+              .filter((timeslot) => timeslot.day === "Tuesday") // Filter slots for Tuesday
+              .map((timeslot, index) => (
+                <Slot
+                  key={index}
+                  time1={timeslot.start_time}
+                  time2={timeslot.end_time}
+                  onSlotToggle={() => handleSlotToggle(timeslot.slot_id)}
+                  isActive={timeslot.slot_id === selectedSlotId}
+                />
+              ))}
+          </div>
+
+          <h1 className="heading">Wednesday</h1>
+          <div className="slots">
+            {timeslots
+              .filter((timeslot) => timeslot.day === "Wednesday") // Filter slots for Tuesday
+              .map((timeslot, index) => (
+                <Slot
+                  key={index}
+                  time1={timeslot.start_time}
+                  time2={timeslot.end_time}
+                  onSlotToggle={() => handleSlotToggle(timeslot.slot_id)}
+                  isActive={timeslot.slot_id === selectedSlotId}
+                />
+              ))}
           </div>
         </div>
       </div>
