@@ -24,7 +24,10 @@ export default function Booked() {
 
   async function getInventory() {
     try {
-      const userId = "404"; // Replace with the actual user ID
+      const userId = document.cookie.replace(
+        /(?:(?:^|.*;\s*)userId\s*=\s*([^;]*).*$)|^.*$/,
+        "$1"
+      ); // Replace with the actual user ID
 
       // Fetch inventory bookings for the user
       const { data: inventoryBookingsData } = await supabase
@@ -67,7 +70,10 @@ export default function Booked() {
 
   async function getBookings() {
     try {
-      const userId = "404"; // Replace with the actual user ID
+      const userId = document.cookie.replace(
+        /(?:(?:^|.*;\s*)userId\s*=\s*([^;]*).*$)|^.*$/,
+        '$1'
+      ); // Replace with the actual user ID
 
       // Fetch bookings for the user
       const { data: bookingsData } = await supabase

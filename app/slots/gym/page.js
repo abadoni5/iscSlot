@@ -61,7 +61,10 @@ export default function Home() {
     }
   }
 
-  const userId = "404";
+  const userId = document.cookie.replace(
+    /(?:(?:^|.*;\s*)userId\s*=\s*([^;]*).*$)|^.*$/,
+    "$1"
+  );
   const [selectedSlotId, setSelectedSlotId] = useState(null);
 
   const handleSlotToggle = (slotId) => {
@@ -79,7 +82,7 @@ export default function Home() {
         // Insert booking record into the 'bookings' table
         await createBooking(userId, selectedSlotId, booking_time);
         console.log("Booking confirmed successfully!");
-        router.push("/booked");
+        
       } catch (error) {
         console.error("Error confirming booking:", error);
       }

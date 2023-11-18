@@ -7,7 +7,7 @@ import "./inventory.css";
 import { useState, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
 import Cookies from "js-cookie";
-// import { useRouter } from "next/router";
+
 import Link from "next/link";
 
 const supabaseUrl = "https://uxklmuwfhfwrwfvtjszi.supabase.co";
@@ -40,9 +40,12 @@ async function createInventory(userId, invID) {
 }
 
 export default function Home() {
-  //   const router = useRouter();
+  
 
-  const userId = "404";
+  const userId = document.cookie.replace(
+    /(?:(?:^|.*;\s*)userId\s*=\s*([^;]*).*$)|^.*$/,
+    '$1'
+  );
   const [inventory, setInventory] = useState([]);
 
   //   const [userId, setUserId] = useState(null);
@@ -87,7 +90,7 @@ export default function Home() {
         // Insert booking record into the 'bookings' table
         await createInventory(userId, selectedInvId, booking_time);
         console.log("Booking confirmed successfully!");
-        // router.push("/booked");
+      
       } catch (error) {
         console.error("Error confirming booking:", error);
       }
