@@ -101,7 +101,7 @@ export default function Home() {
             ))}
           </div>
           <div className="mt-6">
-            <a href="/booked">
+            <Link href="/booked">
               <button
                 onClick={handleConfirm}
                 className="bg-emerald-900 hover:bg-emerald-700 text-amber-400 font-bold py-3 px-6 rounded-lg mt-6 flex items-center space-x-2 transition-all duration-300"
@@ -109,7 +109,7 @@ export default function Home() {
                 Confirm &nbsp;
                 <i className="fas fa-check"></i>
               </button>
-            </a>
+            </Link>
           </div>
         </main>
       </div>
