@@ -13,7 +13,7 @@ const mainText = () => {
             </div>
 
             <div>
-                <a href='/coaching'>
+                <a href='/login'>
                     <button className='bg-amber-300 hover:bg-amber-400 text-emerald-900 text-2xl font-medium px-16 py-4 rounded-full mt-8'>
                         Explore
                     </button>

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Navbar2 from "../../../components/Navbar2";
+import Navbar2 from "@/components/Navbar2";
 import "../gym/gym.css";
 import Slot from "@/components/slot";
 import { useState, useEffect } from "react";
