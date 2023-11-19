@@ -134,30 +134,36 @@ export default function Home() {
           </Link>
         </div>
         <div className="right">
-          {timeslots
+        {timeslots
             .map((timeslot) => timeslot.day) // Extract unique days
             .filter((day, index, self) => self.indexOf(day) === index) // Filter unique days
-            .map((day) => (
-              <React.Fragment key={day}>
-                <h1 className="heading">{day}</h1>
-                <div className="slots">
-                  {timeslots
-                    .filter(
-                      (timeslot) =>
-                        timeslot.day === day && timeslot.sport_id === 4
-                    ) // Filter by day and sport_id
-                    .map((timeslot, index) => (
-                      <Slot
-                        key={index}
-                        time1={timeslot.start_time}
-                        time2={timeslot.end_time}
-                        onSlotToggle={() => handleSlotToggle(timeslot.slot_id)}
-                        isActive={timeslot.slot_id === selectedSlotId}
-                      />
-                    ))}
-                </div>
-              </React.Fragment>
-            ))}
+            .map((day) => {
+              const daySlots = timeslots.filter(
+                (timeslot) => timeslot.day === day && timeslot.sport_id === 3
+              );
+              if (daySlots.length > 0) {
+                return (
+                  <React.Fragment key={day}>
+                    <h1 className="heading">{day}</h1>
+                    <div className="slots">
+                      {daySlots.map((timeslot, index) => (
+                        <Slot
+                          key={index}
+                          time1={timeslot.start_time}
+                          time2={timeslot.end_time}
+                          onSlotToggle={() =>
+                            handleSlotToggle(timeslot.slot_id)
+                          }
+                          isActive={timeslot.slot_id === selectedSlotId}
+                        />
+                      ))}
+                    </div>
+                  </React.Fragment>
+                );
+              } else {
+                return null; // Skip rendering if no slots for the day
+              }
+            })}
         </div>
       </div>
     </div>

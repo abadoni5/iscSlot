@@ -72,7 +72,7 @@ export default function Booked() {
     try {
       const userId = document.cookie.replace(
         /(?:(?:^|.*;\s*)userId\s*=\s*([^;]*).*$)|^.*$/,
-        '$1'
+        "$1"
       ); // Replace with the actual user ID
 
       // Fetch bookings for the user
@@ -90,14 +90,28 @@ export default function Booked() {
         .select()
         .in("slot_id", slotIds);
 
-      // Combine bookingsData and slotsData based on the slot_id
+      // Fetch additional information from the 'slots' table
+      const { data: additionalSlotsData } = await supabase
+        .from("slots")
+        .select("slot_id, location")
+        .in("slot_id", slotIds);
+
+      // Combine bookingsData, slotsData, and additionalSlotsData based on the slot_id
       const combinedData = bookingsData.map((booking) => {
         const matchingSlot = slotsData.find(
           (slot) => slot.slot_id === booking.slot_id
         );
+
+        const additionalSlotInfo = additionalSlotsData.find(
+          (additionalSlot) => additionalSlot.slot_id === booking.slot_id
+        );
+
         return {
           booking,
-          slot: matchingSlot,
+          slot: {
+            ...matchingSlot,
+            location: additionalSlotInfo?.location || "", // Use an empty string if location is not available
+          },
         };
       });
 
@@ -107,6 +121,7 @@ export default function Booked() {
       // Handle error (e.g., display an error message)
     }
   }
+
   const handleCancelBooking = async (bookingId) => {
     try {
       if (bookingId) {
@@ -153,9 +168,11 @@ export default function Booked() {
       console.error("Error returning equipment:", error.message);
     }
   };
-
+  const styling = {
+    background: "#FEF7ED",
+  };
   return (
-    <div>
+    <div style={styling}>
       <Navbar2 />
       <div className="flex flex-col items-center justify-center min-h-screen py-2">
         <main className="flex flex-col items-center justify-flexstart w-full flex-1 px-20 text-center mt-20">
@@ -172,6 +189,7 @@ export default function Booked() {
                 <p>Slot Start Time: {booking.slot.start_time}</p>
                 <p>Slot End Time: {booking.slot.end_time}</p>
                 <p>Slot Day: {booking.slot.day}</p>
+                <p>Location: {booking.slot.location}</p>
                 <button
                   onClick={() =>
                     handleCancelBooking(booking.booking.booking_id)

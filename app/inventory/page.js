@@ -1,22 +1,22 @@
-'use client'
-import React, { useState, useEffect } from 'react';
-import Navbar2 from '../../components/Navbar2';
-import Inventory from '../../components/Inventory';
-import { createClient } from '@supabase/supabase-js';
-import Link from 'next/link';
+"use client";
+import React, { useState, useEffect } from "react";
+import Navbar2 from "../../components/Navbar2";
+import Inventory from "../../components/Inventory";
+import { createClient } from "@supabase/supabase-js";
+import Link from "next/link";
 
-import 'tailwindcss/tailwind.css';
+import "tailwindcss/tailwind.css";
 
-const supabaseUrl = 'https://uxklmuwfhfwrwfvtjszi.supabase.co';
+const supabaseUrl = "https://uxklmuwfhfwrwfvtjszi.supabase.co";
 const supabaseKey =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4a2xtdXdmaGZ3cndmdnRqc3ppIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTk3MjM4MDYsImV4cCI6MjAxNTI5OTgwNn0.jOSjVvG_40c-sDKi8wrL_aJQPGMf6M48pwB_NlqhlDU';
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4a2xtdXdmaGZ3cndmdnRqc3ppIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTk3MjM4MDYsImV4cCI6MjAxNTI5OTgwNn0.jOSjVvG_40c-sDKi8wrL_aJQPGMf6M48pwB_NlqhlDU";
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 async function createInventory(userId, invID) {
   try {
     const { data, error } = await supabase
-      .from('inventorybookings')
+      .from("inventorybookings")
       .insert([
         {
           user_id: userId,
@@ -28,17 +28,17 @@ async function createInventory(userId, invID) {
     if (error) {
       console.log(error);
     }
-    console.log('Inventory Issued:', data);
+    console.log("Inventory Issued:", data);
   } catch (error) {
-    console.error('Error issuing inventory:', error);
-    console.error('Supabase error details:', error.details);
+    console.error("Error issuing inventory:", error);
+    console.error("Supabase error details:", error.details);
   }
 }
 
 export default function Home() {
   const userId = document.cookie.replace(
     /(?:(?:^|.*;\s*)userId\s*=\s*([^;]*).*$)|^.*$/,
-    '$1'
+    "$1"
   );
   const [inventory, setInventory] = useState([]);
   const [selectedInvId, setSelectedInvId] = useState(null);
@@ -49,10 +49,10 @@ export default function Home() {
 
   async function getInventory() {
     try {
-      const { data } = await supabase.from('inventory').select();
+      const { data } = await supabase.from("inventory").select();
       setInventory(data || []);
     } catch (error) {
-      console.error('Error fetching Inventory:', error.message);
+      console.error("Error fetching Inventory:", error.message);
     }
   }
 
@@ -63,23 +63,26 @@ export default function Home() {
   };
 
   const handleConfirm = async () => {
-    console.log('Confirm Button Clicked!');
-    console.log('User ID:', userId);
-    console.log('Selected Inventory ID:', selectedInvId);
+    console.log("Confirm Button Clicked!");
+    console.log("User ID:", userId);
+    console.log("Selected Inventory ID:", selectedInvId);
     if (selectedInvId && userId) {
       try {
         await createInventory(userId, selectedInvId);
-        console.log('Inventory confirmed successfully!');
+        console.log("Inventory confirmed successfully!");
       } catch (error) {
-        console.error('Error confirming inventory:', error);
+        console.error("Error confirming inventory:", error);
       }
     } else {
-      console.error('User ID or selected inventory ID is not available.');
+      console.error("User ID or selected inventory ID is not available.");
     }
   };
-
+  const styling = {
+    background: "#FEF7ED",
+    height: "100vh",
+  };
   return (
-    <div>
+    <div style={styling}>
       <Navbar2 />
       <div className="flex flex-col items-center justify-center mt-16 py-2">
         <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center mt-10">
